@@ -1,1 +1,3 @@
 rootProject.name = 'spring-boot-java-template'
+
+include "infra:db-core"

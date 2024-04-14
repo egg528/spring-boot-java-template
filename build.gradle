@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
-    alias(libs.plugins.springBoot) apply(false)
-    alias(libs.plugins.springDependencyManagement) apply(false)
+    alias(libs.plugins.spring.boot) apply(false)
+    alias(libs.plugins.spring.dependency.management) apply(false)
 }
 
 allprojects {
@@ -22,19 +22,16 @@ subprojects {
         enabled = false
     }
 
-    dependencyManagement {
-        imports {
-            mavenBom libs.springCloudDependencies
-        }
-    }
-
     repositories {
         mavenCentral()
     }
 
     dependencies {
+        /*** spring cloud ***/
+        platform(libs.spring.cloud.dependencies)
+
         /*** test ***/
-        testImplementation libs.junitJupiterApi
-        testRuntimeOnly libs.junitJupiterEngine
+        testImplementation libs.junit.jupiter.api
+        testRuntimeOnly libs.junit.jupiter.engine
     }
 }
